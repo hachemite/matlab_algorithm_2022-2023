@@ -1,0 +1,30 @@
+function c = my_polyadd(p1, p2)
+% MY_POLYADD adds two polynomials together
+% Inputs: p1 and p2 - vectors representing the input polynomials
+% Output: c - vector representing the sum of the input polynomials
+
+% Determine the length of each input vector
+n1 = length(p1);
+n2 = length(p2);
+
+% Pad the shorter vector with zeros so that both vectors have the same length
+if n1 < n2
+    p1 = [zeros(1, n2 - n1), p1];
+elseif n2 < n1
+    p2 = [zeros(1, n1 - n2), p2];
+end
+
+% Add the corresponding coefficients of each polynomial
+c = p1 + p2;
+end
+
+
+p1 = [1 2 3];   % p1 = x^2 + 2x + 3
+p2 = [2 3 4 5];   % p2 = 2x^2 + 3x + 4
+
+% Add the two polynomials using my_polyadd
+c = my_polyadd(p1, p2); % c = [3 5 7], representing 3x^2 + 5x + 7
+
+% Display the result
+disp(c);
+
